@@ -18,4 +18,5 @@ func cleanInput(text string) []string {
 		result = append(result, word)
 	}
 	return result
+	//comment
 }
