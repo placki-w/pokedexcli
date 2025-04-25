@@ -1,6 +1,6 @@
-This is a guided project from Boot.dev to create a pokedex cli tool. 
+This is a guided project from Boot.dev to create a pokedex cli tool with data from the pokemon api: https://pokeapi.co/
 
-Use commands like map to get location areas.
+Use commands like map to get location areas. Or mapb to go backwards.
 
 Use command explore to check out pokemon in that area.
 
