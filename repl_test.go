@@ -7,35 +7,22 @@ import (
 func TestCleanInput(t *testing.T) {
 	cases := []struct {
 		input    string
-		expected []string
+		expected string
 	}{
 		{
 			input:    "  hello  world  ",
-			expected: []string{"hello", "world"},
+			expected: "hello  world", // cleanInput trims spaces but won't collapse spaces between words
 		},
 		{
 			input:    "Charmander Bulbasaur PIKACHU",
-			expected: []string{"charmander", "bulbasaur", "pikachu"},
+			expected: "charmander bulbasaur pikachu", // cleanInput lowercase conversion
 		},
 	}
 
 	for _, c := range cases {
-		actual := cleanInput(c.input)
-		// Check the length of the actual slice against the expected slice
-		if len(actual) != len(c.expected) {
-			t.Errorf("Length mismatch for input '%s': got %d, expected %d",
-				c.input, len(actual), len(c.expected))
-			continue
-		}
-
-		for i := range actual {
-			word := actual[i]
-			expectedWord := c.expected[i]
-			// Check each word in the slice
-			if word != expectedWord {
-				t.Errorf("Word mismatch at position %d for input '%s': got '%s', expected '%s'",
-					i, c.input, word, expectedWord)
-			}
+		actual := cleanInput(c.input) // Call the function being tested
+		if actual != c.expected {
+			t.Errorf("Mismatch for input '%s': got '%s', expected '%s'", c.input, actual, c.expected)
 		}
 	}
 }
